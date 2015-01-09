@@ -32,25 +32,24 @@ class Board {
         return MoveWon
     }
 
-    // Check each col
+    // Check each column
     for (c <- 0 until 2) {
       if (pieces(0 * 3 + c) == v && pieces(1 * 3 + c) == v && pieces(2 * 3 + c) == v)
         return MoveWon
     }
 
-    // Check crowss
+    // Check cross
     if (pieces(0 * 3 + 0) == v && pieces(1 * 3 + 1) == v && pieces(2 * 3 + 2) == v)
       return MoveWon
 
-    // Check crowss
+    // Check cross
     if (pieces(0 * 3 + 2) == v && pieces(1 * 3 + 1) == v && pieces(2 * 3 + 0) == v)
       return MoveWon
 
 
     // Check draw
     for (idx <- 0 until 9)
-      if (pieces(idx) != -1) return MoveValid
-
+      if (pieces(idx) == -1) return MoveValid
     MoveDraw
   }
 }

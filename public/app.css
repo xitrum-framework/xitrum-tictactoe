@@ -1,0 +1,16 @@
+a {
+  color: #3B5998;
+  text-decoration: none;
+}
+
+#board {
+  width: 300px;
+}
+
+#board td {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+}

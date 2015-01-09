@@ -1,0 +1,79 @@
+- import tictactoe.Player
+
+h3#status Connecting...
+
+table#board.table.table-bordered
+  tr
+    td(data-idx="0")
+    td(data-idx="1")
+    td(data-idx="2")
+  tr
+    td(data-idx="3")
+    td(data-idx="4")
+    td(data-idx="5")
+  tr
+    td(data-idx="6")
+    td(data-idx="7")
+    td(data-idx="8")
+
+script
+  = s"var playerUrl = '${sockJsAbsUrl[Player]}';"
+
+:javascript
+  var setStatus = function(text) {
+    $('#status').html(text);
+  };
+
+  var sock = new SockJS(playerUrl);
+
+  sock.onopen = function() {
+    setStatus('Waiting for opponent...');
+  };
+
+  sock.onclose = function() {
+    setStatus('Connection closed.');
+  };
+
+  sock.onmessage = function(e) {
+    var text = e.data;
+    console.log('Server -> Client: ' + text);
+
+    var json = JSON.parse(text);
+    switch (json.type) {
+      case 'started':
+        if (json.iAmO) {
+          setStatus('You are O. You move first.');
+        } else {
+          setStatus('You are X. Your opponent moves first.');
+        }
+        break;
+
+      case 'move':
+        var idx = json.idx;
+        var piece = json.o ? 'O' : 'X';
+        $('#board td[data-idx=' + idx + ']').html(piece);
+        break;
+
+      case 'won':
+        setStatus('You won!');
+        break;
+
+      case 'draw':
+        setStatus('Draw!');
+        break;
+
+      case 'lose':
+        setStatus('You lost!');
+        break;
+
+      case 'opponentQuit':
+        setStatus('Opponent quit!');
+        break;
+    }
+  };
+
+  $('#board td').click(function() {
+    var idx = $(this).data('idx');
+    console.log('Client -> Server: ' + idx);
+    sock.send(idx);
+  });

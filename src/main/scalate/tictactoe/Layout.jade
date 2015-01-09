@@ -1,0 +1,29 @@
+- import tictactoe._
+
+!!! 5
+html
+  head
+    != antiCsrfMeta
+    != xitrumCss
+
+    meta(content="text/html; charset=utf-8" http-equiv="content-type")
+    title Tictactoe
+
+    link(rel="shortcut icon" href={publicUrl("favicon.ico")})
+
+    link(type="text/css" rel="stylesheet" media="all" href={webJarsUrl("bootstrap/3.3.1/css", "bootstrap.css", "bootstrap.min.css")})
+    link(type="text/css" rel="stylesheet" media="all" href={publicUrl("app.css")})
+
+    != jsDefaults
+
+  body
+    .container
+      h3
+        a(href={url[Home]}) New game
+
+      #flash
+        !~ jsRenderFlash()
+      != renderedView
+
+    != jsDefaults
+    != jsForView

@@ -7,7 +7,12 @@ object Lobby {
   case object Join
   case class Started(o: Boolean, opponent: ActorRef)
 
+  // Single node
   val ref = actorSystem.actorOf(Props[Lobby])
+
+  // Clustering
+//  val registry = glokka.Registry.start(actorSystem, "registry")
+//  registry ! glokka.Registry.Register("lobby", Props[Lobby])
 }
 
 class Lobby extends Actor {

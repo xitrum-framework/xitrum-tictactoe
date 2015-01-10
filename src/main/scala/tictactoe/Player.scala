@@ -12,7 +12,21 @@ object Player {
 @SOCKJS("player")
 class Player extends SockJsAction {
   def execute() {
-    Lobby.ref ! Lobby.Join
+    // Single node
+    joinLobby(Lobby.ref)
+
+    // Clustering
+//    Lobby.registry ! glokka.Registry.Lookup("lobby")
+//    context.become(waitingLobbyLookup)
+  }
+
+  private def waitingLobbyLookup: Actor.Receive = {
+    case glokka.Registry.Found("lobby", lobby) =>
+      joinLobby(lobby)
+  }
+
+  private def joinLobby(lobby: ActorRef) {
+    lobby ! Lobby.Join
     context.become(waitingOpponentJoin)
   }
 

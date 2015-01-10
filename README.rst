@@ -1,5 +1,7 @@
 Tictactoe web game - Demo for Akka and Xitrum
 
+See slides: `Develop realtime web with Scala and Xitrum <http://www.slideshare.net/ngocdaothanh/develop-realtime-web-with-scala-and-xitrum>`_
+
 Requirement: Java 7+
 
 .. image:: screenshot.png
@@ -45,7 +47,12 @@ Directory ``target/xitrum`` will be created:
       start
       start.bat
 
-You can run a cluster of Tictactoe servers. Use akka.conf to config the cluster.
+Clustering
+----------
+
+You can run a cluster of Tictactoe servers.
+See "Single node" and "Clustering" in Lobby.scala and Player.scala.
+Use akka.conf to config the cluster.
 
 How this program works
 ----------------------
@@ -86,4 +93,4 @@ Exercises
 * Use `Scala.js <http://www.scala-js.org/>`_ to convert game logic code written
   in Scala to JavaScript, to share game logic code between server side and
   client side.
-* Use Akka FSM instead of `become`.
+* Use Akka FSM instead of ``become``.

@@ -16,9 +16,14 @@ class Player extends SockJsAction {
 //    context.become(waitingLobbyLookup)
   }
 
+  // Clustering
   private def waitingLobbyLookup: Actor.Receive = {
     case glokka.Registry.Found("lobby", lobby) =>
       joinLobby(lobby)
+
+    case glokka.Registry.NotFound("lobby") =>
+      log.warn("Lobby not ready")
+      context.stop(self)
   }
 
   private def joinLobby(lobby: ActorRef) {

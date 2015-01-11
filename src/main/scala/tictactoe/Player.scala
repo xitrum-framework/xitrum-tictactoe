@@ -5,10 +5,6 @@ import xitrum.SockJsAction
 import xitrum.annotation.SOCKJS
 import xitrum.SockJsText
 
-object Player {
-
-}
-
 @SOCKJS("player")
 class Player extends SockJsAction {
   def execute() {

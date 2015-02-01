@@ -4,7 +4,7 @@ name         := "xitrum-tictactoe"
 
 version      := "1.0-SNAPSHOT"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.5"
 
 scalacOptions ++= Seq("-deprecation", "-feature", "-unchecked")
 
@@ -13,7 +13,7 @@ javacOptions ++= Seq("-source", "1.7", "-target", "1.7")
 
 //------------------------------------------------------------------------------
 
-libraryDependencies += "tv.cntt" %% "xitrum" % "3.21"
+libraryDependencies += "tv.cntt" %% "xitrum" % "3.22"
 
 // Xitrum uses SLF4J, an implementation of SLF4J is needed
 libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2"
@@ -21,7 +21,7 @@ libraryDependencies += "ch.qos.logback" % "logback-classic" % "1.1.2"
 // For writing condition in logback.xml
 libraryDependencies += "org.codehaus.janino" % "janino" % "2.7.7"
 
-libraryDependencies += "org.webjars" % "bootstrap" % "3.3.1"
+libraryDependencies += "org.webjars" % "bootstrap" % "3.3.2"
 
 // Scalate template engine config for Xitrum -----------------------------------
 

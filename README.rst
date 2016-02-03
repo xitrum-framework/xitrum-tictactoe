@@ -17,12 +17,11 @@ Run:
 
 Open http://localhost:8000/ or https://localhost:4430/
 
-To generate Eclipse or IntelliJ project:
+To generate Eclipse project:
 
 ::
 
   sbt/sbt eclipse
-  sbt/sbt gen-idea
 
 Production mode
 ---------------

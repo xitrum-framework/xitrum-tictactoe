@@ -24,8 +24,8 @@ class Lobby extends Actor {
     case Join =>
       waitingPlayer match {
         case Some(player) =>
-          player ! Started(true, sender)
-          sender ! Started(false, player)
+          player ! Started(o = true, sender)
+          sender ! Started(o = false, player)
           waitingPlayer = None
 
         case None =>

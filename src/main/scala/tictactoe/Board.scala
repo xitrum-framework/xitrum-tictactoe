@@ -27,13 +27,13 @@ class Board {
     val v = if (o) 0 else 1
 
     // Check each row
-    for (r <- 0 until 2) {
+    for (r <- 0 to 2) {
       if (pieces(r * 3) == v && pieces(r * 3 + 1) == v && pieces(r * 3 + 2) == v)
         return MoveWon
     }
 
     // Check each column
-    for (c <- 0 until 2) {
+    for (c <- 0 to 2) {
       if (pieces(0 * 3 + c) == v && pieces(1 * 3 + c) == v && pieces(2 * 3 + c) == v)
         return MoveWon
     }

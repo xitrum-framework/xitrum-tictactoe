@@ -2,7 +2,7 @@ Tictactoe web game - Demo for Akka and Xitrum
 
 See slides: `Develop realtime web with Scala and Xitrum <http://www.slideshare.net/ngocdaothanh/develop-realtime-web-with-scala-and-xitrum>`_
 
-Requirement: Java 7+
+Requirement: Java 8+
 
 .. image:: screenshot.png
 
@@ -13,7 +13,7 @@ Run:
 
 ::
 
-  sbt/sbt run
+  sbt/sbt fgRun
 
 Open http://localhost:8000/ or https://localhost:4430/
 
@@ -30,7 +30,7 @@ Package:
 
 ::
 
-  sbt/sbt xitrum-package
+  sbt/sbt xitrumPackage
 
 Directory ``target/xitrum`` will be created:
 

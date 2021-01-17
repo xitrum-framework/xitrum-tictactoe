@@ -7,7 +7,7 @@ import xitrum.SockJsText
 
 @SOCKJS("player")
 class Player extends SockJsAction {
-  def execute() {
+  def execute(): Unit = {
     // Single node
     joinLobby(Lobby.ref)
 
@@ -26,7 +26,7 @@ class Player extends SockJsAction {
       context.stop(self)
   }
 
-  private def joinLobby(lobby: ActorRef) {
+  private def joinLobby(lobby: ActorRef): Unit = {
     lobby ! Lobby.Join
     context.become(waitingOpponentJoin)
   }

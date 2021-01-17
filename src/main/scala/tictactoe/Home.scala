@@ -4,7 +4,7 @@ import xitrum.annotation.GET
 
 @GET("")
 class Home extends Layout {
-  def execute() {
+  def execute(): Unit = {
     respondView()
   }
 }

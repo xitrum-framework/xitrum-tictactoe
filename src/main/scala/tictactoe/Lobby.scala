@@ -8,7 +8,7 @@ object Lobby {
   case class Started(o: Boolean, opponent: ActorRef)
 
   // Single node
-  val ref = actorSystem.actorOf(Props[Lobby])
+  val ref = actorSystem.actorOf(Props[Lobby]())
 
   // Clustering
 //  val registry = glokka.Registry.start(actorSystem, "registry")
@@ -24,13 +24,13 @@ class Lobby extends Actor {
     case Join =>
       waitingPlayer match {
         case Some(player) =>
-          player ! Started(o = true, sender)
-          sender ! Started(o = false, player)
+          player ! Started(o = true, sender())
+          sender() ! Started(o = false, player)
           waitingPlayer = None
 
         case None =>
-          waitingPlayer = Some(sender)
-          context.watch(sender)
+          waitingPlayer = Some(sender())
+          context.watch(sender())
       }
 
     case Terminated(player) =>
